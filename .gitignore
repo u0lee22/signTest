@@ -1,7 +1,7 @@
 .DS_Store
 .idea
-out/
-bower_components
+out/*
+bower_components/*
 .bower.json
 package-lock.json
 
