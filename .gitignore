@@ -1,13 +1,9 @@
 .idea
 .project
-.settings
-*~
-*.patch
+.out
+.bower_conponents
 .bower.json
 package-lock.json
-
-npm-debug.log*
-
 
 /dist/*
 !/dist/.eslintrc.json
