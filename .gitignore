@@ -1,0 +1,15 @@
+.idea
+.project
+.settings
+*~
+*.patch
+.bower.json
+package-lock.json
+
+npm-debug.log*
+
+
+/dist/*
+!/dist/.eslintrc.json
+
+/node_modules

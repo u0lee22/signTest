@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        table {
+            width: 30%;
+        }
+
+        span {
+            padding-left: 10px;
+            font-size: 11px;
+            color: red;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.icon.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#id').focus();
+            $("input:radio[class='gender']:radio[id='woman']").prop('checked', true);
+
+            $('#id').blur(function () {
+                if (!isNaN($('#id').val())|| $('#id').val().length < 4) {
+                    $('#idValidation').text('ID를 4자리 이상으로 입력하세요.');
+                    $('#id').focus();
+                } else {
+                    $('#idValidation').text('');
+                    $('#idValidation').addClass({icons: {primary: 'ui-icon-check'}});
+                    $('#password').focus();
+                }
+            });
+            $('#password').blur(function () {
+                if ($('#password').val().length < 4) {
+                    $('#pwValidation').text('비밀번호를 4자리 이상으로 입력하세요.');
+                    $('#password').focus();
+                } else {
+                    $('#pwValidation').text('');
+                    $('#passwordCheck').focus();
+                }
+            });
+            $('#passwordCheck').blur(function () {
+                if ($('#password').val() != $('#passwordCheck').val()) {
+                    $('#pwCheckValidation').text('비밀번호가 일치하지 않습니다.');
+                    $('#passwordCheck').focus();
+                } else {
+                    $('#pwCheckValidation').text('');
+                    $('#age').focus();
+                }
+            });
+            $('#sign').click(function () {
+                if ($('#id').val() == '') {
+                    $('#id').focus();
+                    $('#idValidation').text('아이디를 입력하세요.');
+                    //비밀번호 공백체크
+                } else if ($('#password').val() == '') {
+                    $('#password').focus();
+                    $('#pwValidation').text('비밀번호를 입력하세요.');
+
+                } else if ($('#passwordCheck').val() == '') {
+                    $('#passwordCheck').focus();
+                    $('#pwCheckValidation').text('비밀번호확인을 입력하세요.');
+                } else {
+                    $('#signForm').submit();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="signForm" action="index.jsp" method="post">
+    <h3>회원가입</h3>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>
+                <input type="text" id="id" name="id">
+                <span class="ui-icon ui-icon-check red" id="idValidation"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td>
+                <input type="password" id="password" name="password">
+                <span id="pwValidation"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호 확인</td>
+            <td>
+                <input type="password" id="passwordCheck">
+                <span id="pwCheckValidation"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>성별</td>
+            <td>
+                <input class="gender" name="gender" type="radio" id="man" value="MAN">남
+                <input class="gender" name="gender" type="radio" id="woman" value="WOMAN">여
+
+            </td>
+        </tr>
+        <tr>
+            <td>이메일</td>
+            <td>
+                <input type="text" id="emailID" name="emailID">@
+                <select id="emailUrl" name="emailUrl">
+                    <option value="anypointmeida.com">anypointmeida.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="naver.com">naver.com</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="button" id="sign" value="회원가입">
+</form>
+</body>
+</html>
+
+
